@@ -582,8 +582,8 @@ class OpUtil(object):
             if user_volume_path:
                 to_install_list.insert(0, f"--target={user_volume_path}")
                 to_install_list.append("--no-cache-dir")
-
-            to_install_list = ["-i", "http://pypi.douban.com/simple/", "--trusted-host", "pypi.douban.com", "--trusted-host", "files.pythonhosted.org"] + to_install_list
+                
+            to_install_list = ["-i", "https://pypi.tuna.tsinghua.edu.cn/simple", "--trusted-host", "pypi.tuna.tsinghua.edu.cn"] + to_install_list
             print("line 586")
             print([sys.executable, "-m", "pip", "install"] + to_install_list)
             subprocess.run([sys.executable, "-m", "pip", "install"] + to_install_list, check=True)
