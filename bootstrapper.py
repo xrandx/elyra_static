@@ -484,6 +484,7 @@ class PythonFileOp(FileOpBase):
                 self.set_parameters_in_env()
 
             with open(python_script_output, "w") as log_file:
+                print("line 487")
                 subprocess.run(run_args, stdout=log_file, stderr=subprocess.STDOUT, check=True)
 
             duration = time.time() - t0
@@ -518,6 +519,7 @@ class RFileOp(FileOpBase):
                 self.set_parameters_in_env()
 
             with open(r_script_output, "w") as log_file:
+                print("line 522")
                 subprocess.run(run_args, stdout=log_file, stderr=subprocess.STDOUT, check=True)
 
             duration = time.time() - t0
@@ -581,12 +583,13 @@ class OpUtil(object):
                 to_install_list.insert(0, f"--target={user_volume_path}")
                 to_install_list.append("--no-cache-dir")
                 to_install_list = ["-i", "http://pypi.douban.com/simple/", "--trusted-host", "pypi.douban.com", "--trusted-host", "files.pythonhosted.org"] + to_install_list
-
+            print("line 586")
             subprocess.run([sys.executable, "-m", "pip", "install"] + to_install_list, check=True)
 
         if user_volume_path:
             os.environ["PIP_CONFIG_FILE"] = f"{user_volume_path}/pip.conf"
 
+        print("line 592")
         subprocess.run([sys.executable, "-m", "pip", "freeze"])
         duration = time.time() - t0
         OpUtil.log_operation_info("Packages installed", duration)
