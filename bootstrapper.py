@@ -584,8 +584,8 @@ class OpUtil(object):
                 to_install_list.append("--no-cache-dir")
                 to_install_list = ["-i", "http://pypi.douban.com/simple/", "--trusted-host", "pypi.douban.com", "--trusted-host", "files.pythonhosted.org"] + to_install_list
             print("line 586")
-            subprocess.run([sys.executable, "-m", "pip", "install"] + to_install_list, check=True)
             print([sys.executable, "-m", "pip", "install"] + to_install_list)
+            subprocess.run([sys.executable, "-m", "pip", "install"] + to_install_list, check=True)
         
         if user_volume_path:
             os.environ["PIP_CONFIG_FILE"] = f"{user_volume_path}/pip.conf"
